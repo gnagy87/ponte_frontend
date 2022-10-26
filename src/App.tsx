@@ -2,13 +2,14 @@ import "./App.css"
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Project } from './interfaces/Project';
+import { filterProjectsByGivenWord } from "./services/FilterService";
+import ProjectFilter from './components/ProjectFilter';
 import Projects from './components/Projects';
 import Create from './components/Create';
-import { useAsync } from "react-async";
 
 const DUMMY_PROJECTS: Array<Project> = [
     {
-      name: "Első projekt", 
+      name: "First project", 
       description: "description description description description description", 
       colleagues: [
         {
@@ -19,7 +20,7 @@ const DUMMY_PROJECTS: Array<Project> = [
       links: ["link1"]
     },
     {
-      name: "Második projekt", 
+      name: "Second project", 
       description: "description description description description description", 
       colleagues: [
         {
@@ -30,7 +31,7 @@ const DUMMY_PROJECTS: Array<Project> = [
       links: ["link2"]
     },
     {
-      name: "Harmadik projekt", 
+      name: "Third project", 
       description: "description description description description description", 
       colleagues: [
         {
@@ -41,7 +42,7 @@ const DUMMY_PROJECTS: Array<Project> = [
       links: ["link3"]
     },
     {
-      name: "Negyedik projekt", 
+      name: "Fourth project", 
       description: "description description description description description", 
       colleagues: [
         {
@@ -55,7 +56,9 @@ const DUMMY_PROJECTS: Array<Project> = [
 
 function App() {
   const [projects, setProjects] = useState<Array<Project>>([]);
+  const [filteredProjects, setFilteredProjects] = useState<Array<Project>>([]);
   const [onCreate, setOnCreate] = useState<boolean>(false);
+  const [filter, setFilter] = useState<boolean>(false);
 
   const getProjects = async () => {
     setProjects(DUMMY_PROJECTS)
@@ -75,10 +78,21 @@ function App() {
     setProjects(prevProjects => [...prevProjects, project])
   };
 
+  const filterProjects = (searched: string) => {
+    if (searched === null || searched === undefined || searched === "") {
+      setFilteredProjects([]);
+      setFilter(false);
+    } else {
+      setFilteredProjects(filterProjectsByGivenWord(projects, searched));
+      setFilter(true);
+    }
+  }
+
   return (
     <div>
       {!onCreate && <button className="btn" onClick={onCreateHandler}>Új projekt</button>}
-      {!onCreate && <Projects projects={projects}/>}
+      {!onCreate && <ProjectFilter filterProjects={filterProjects}/>}
+      {!onCreate && <Projects projects={filter ? filteredProjects : projects}/>}
       {onCreate && <Create offCreateHandler={offCreateHandler} addNewProject={addNewProject}/>}
     </div>
   );
