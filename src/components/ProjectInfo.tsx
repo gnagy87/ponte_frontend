@@ -14,19 +14,18 @@ const ProjectInfo = ({page, addPage, project, setProject}: Props) => {
   const [enteredDescription, setEnteredDescription] = useState("");
 
   const nameChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
-    console.log("name")
     setEnteredName(event.currentTarget.value);
   };
 
   const descriptionChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
-    console.log("desc")
-
     setEnteredDescription(event.currentTarget.value);
   };
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setProject({ ...project, name: enteredName, description: enteredDescription });
+    setEnteredName("");
+    setEnteredDescription("");
     addPage(page + 1);
   };
   
@@ -39,7 +38,7 @@ const ProjectInfo = ({page, addPage, project, setProject}: Props) => {
           placeholder="Projekt név"
           required
           value={enteredName}
-          onChange={(e) => setEnteredName(e.target.value)}
+          onChange={(e) => nameChangeHandler(e)}
         />
         <input
             type="text"
@@ -47,7 +46,7 @@ const ProjectInfo = ({page, addPage, project, setProject}: Props) => {
             maxLength={500}
             placeholder="Projekt leírás"
             value={enteredDescription}
-            onChange={(e) => setEnteredDescription(e.target.value)}
+            onChange={(e) => descriptionChangeHandler(e)}
         />
         <button type="submit">Következő lépés</button>
       </form>

@@ -1,14 +1,15 @@
 import "./App.css"
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Project } from './interfaces/Project';
 import Projects from './components/Projects';
 import Create from './components/Create';
+import { useAsync } from "react-async";
 
 const DUMMY_PROJECTS: Array<Project> = [
     {
       name: "projekt1", 
-      description: "description1", 
+      description: "description description description description description", 
       colleagues: [
         {
           name: "colleague1",
@@ -19,7 +20,7 @@ const DUMMY_PROJECTS: Array<Project> = [
     },
     {
       name: "projekt2", 
-      description: "description2", 
+      description: "description description description description description", 
       colleagues: [
         {
           name: "colleague2",
@@ -30,7 +31,7 @@ const DUMMY_PROJECTS: Array<Project> = [
     },
     {
       name: "projekt3", 
-      description: "description3", 
+      description: "description description description description description", 
       colleagues: [
         {
           name: "colleague3",
@@ -41,7 +42,7 @@ const DUMMY_PROJECTS: Array<Project> = [
     },
     {
       name: "projekt4", 
-      description: "description4", 
+      description: "description description description description description", 
       colleagues: [
         {
           name: "colleague4",
@@ -54,8 +55,14 @@ const DUMMY_PROJECTS: Array<Project> = [
 
 
 function App() {
-  const [projects, setProjects] = useState(DUMMY_PROJECTS);
-  const [onCreate, setOnCreate] = useState(false);
+  const [projects, setProjects] = useState<Array<Project>>([]);
+  const [onCreate, setOnCreate] = useState<boolean>(false);
+
+  const getProjects = async () => {
+    setProjects(DUMMY_PROJECTS)
+  }
+
+  useEffect(() => {getProjects()}, []);
 
   const onCreateHandler = () => {
     setOnCreate(true);

@@ -4,6 +4,7 @@ import { Project } from "../interfaces/Project";
 import ColleagueInfo from "./ColleagueInfo";
 import LinkInfo from "./LinkInfo";
 import ProjectInfo from "./ProjectInfo";
+import ProgressBar from "./ProgressBar"
 
 interface Props {
   offCreateHandler: () => any;
@@ -11,15 +12,13 @@ interface Props {
 }
 
 const Create = ({ offCreateHandler, addNewProject }: Props) => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState<number>(0);
   const [project, setProject] = useState<Project>({
     name: "",
     description: "", 
     colleagues: [],  
     links: []
   });
-
-  console.log(project)
 
   const addPage = (number: number) => {
     setPage(number);
@@ -35,35 +34,29 @@ const Create = ({ offCreateHandler, addNewProject }: Props) => {
     <ColleagueInfo
       page={page}
       addPage={addPage}
+      project={project}
+      setProject={setProject}
     />,
     <LinkInfo
       page={page}
       addPage={addPage}
+      project={project}
+      setProject={setProject}
     />,
   ];
 
+  console.log("page: " + page)
+  console.log("actual project: " + project);
+
   if (page === 3) {
+    addNewProject(project);
+    //setPage(0);
     offCreateHandler();
   }
 
   return (
     <div className="App">
-      <div className="progress-bar">
-        {
-          <div
-            style={{
-              width:
-                page === 0
-                  ? "25%"
-                  : page === 1
-                  ? "50"
-                  : page === 2
-                  ? "75%"
-                  : "100%"
-            }}
-          ></div>
-        }
-      </div>
+      <ProgressBar page={page}/>
       <div className="body">{componentList[page]}</div>
     </div>
   );
