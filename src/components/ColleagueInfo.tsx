@@ -1,15 +1,8 @@
 import React, { ChangeEvent } from "react";
-import { Project } from "../interfaces/Project";
+import { InfoProps } from "../interfaces/InfoProps";
 import { useState } from 'react';
 
-interface Props {
-  page: number;
-  addPage: (n: number) => void;
-  project: Project;
-  setProject: (p: Project) => void;
-}
-
-const ColleagueInfo = ({page, addPage, project, setProject}: Props) => {
+const ColleagueInfo = ({page, addPage, project, setProject}: InfoProps) => {
   const [enteredName, setEnteredName] = useState("");
   const [enteredPosition, setEnteredPosition] = useState("");
 
@@ -54,7 +47,7 @@ const ColleagueInfo = ({page, addPage, project, setProject}: Props) => {
             Következő lépés
       </button>
     </div>
-  )
+  );
 }
 
 export default ColleagueInfo;

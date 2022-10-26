@@ -1,15 +1,8 @@
 import React, { ChangeEvent } from "react";
-import { Project } from "../interfaces/Project";
+import { InfoProps } from "../interfaces/InfoProps";
 import { useState } from 'react';
 
-interface Props {
-  page: number;
-  addPage: (n: number) => void;
-  project: Project;
-  setProject: (p: Project) => void;
-}
-
-const ProjectInfo = ({page, addPage, project, setProject}: Props) => {
+const ProjectInfo = ({page, addPage, project, setProject}: InfoProps) => {
   const [enteredName, setEnteredName] = useState("");
   const [enteredDescription, setEnteredDescription] = useState("");
 
@@ -51,7 +44,7 @@ const ProjectInfo = ({page, addPage, project, setProject}: Props) => {
         <button type="submit">Következő lépés</button>
       </form>
     </div>
-  )
+  );
 }
 
 export default ProjectInfo;

@@ -32,7 +32,6 @@ const ProjectItem = ({ projectItem }: Props) => {
         </div>
     </div>
     </div>
-
   );
 }
 

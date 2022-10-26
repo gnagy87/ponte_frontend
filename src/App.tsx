@@ -53,7 +53,6 @@ const DUMMY_PROJECTS: Array<Project> = [
     }
 ];
 
-
 function App() {
   const [projects, setProjects] = useState<Array<Project>>([]);
   const [onCreate, setOnCreate] = useState<boolean>(false);

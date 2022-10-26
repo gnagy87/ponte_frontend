@@ -1,17 +1,13 @@
 import React from "react";
 import { useState } from 'react';
 import { Project } from "../interfaces/Project";
+import { CreateProps } from "../interfaces/CreateProps";
 import ColleagueInfo from "./ColleagueInfo";
 import LinkInfo from "./LinkInfo";
 import ProjectInfo from "./ProjectInfo";
 import ProgressBar from "./ProgressBar"
 
-interface Props {
-  offCreateHandler: () => any;
-  addNewProject: (project: Project) => void;
-}
-
-const Create = ({ offCreateHandler, addNewProject }: Props) => {
+const Create = ({ offCreateHandler, addNewProject }: CreateProps) => {
   const [page, setPage] = useState<number>(0);
   const [project, setProject] = useState<Project>({
     name: "",
@@ -22,7 +18,7 @@ const Create = ({ offCreateHandler, addNewProject }: Props) => {
 
   const addPage = (number: number) => {
     setPage(number);
-  }
+  };
 
   const componentList = [
     <ProjectInfo
@@ -45,12 +41,8 @@ const Create = ({ offCreateHandler, addNewProject }: Props) => {
     />,
   ];
 
-  console.log("page: " + page)
-  console.log("actual project: " + project);
-
   if (page === 3) {
     addNewProject(project);
-    //setPage(0);
     offCreateHandler();
   }
 

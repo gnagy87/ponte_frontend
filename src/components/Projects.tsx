@@ -1,7 +1,6 @@
 import React from "react";
 import { Project } from "../interfaces/Project"
 import ProjectItem from "./ProjectItem";
-import CreateProjectItem from './Create';
 
 interface Props {
   projects: Array<Project> | [] | null;

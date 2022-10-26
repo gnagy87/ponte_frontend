@@ -1,15 +1,8 @@
 import React, { ChangeEvent } from "react";
-import { Project } from "../interfaces/Project";
+import { InfoProps } from "../interfaces/InfoProps";
 import { useState } from 'react';
 
-interface Props {
-  page: number;
-  addPage: (n: number) => void;
-  project: Project;
-  setProject: (p: Project) => void;
-}
-
-const LinkInfo = ({page, addPage, project, setProject}: Props) => {
+const LinkInfo = ({page, addPage, project, setProject}: InfoProps) => {
   const [enteredLink, setEnteredLink] = useState("");
 
   const enteredLinkHandler = (event: React.FormEvent<HTMLInputElement>) => {
@@ -45,7 +38,7 @@ const LinkInfo = ({page, addPage, project, setProject}: Props) => {
           Befejezés
         </button>
     </div>
-  )
+  );
 }
 
 export default LinkInfo;
