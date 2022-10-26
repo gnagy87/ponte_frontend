@@ -3,8 +3,8 @@ import { InfoProps } from "../interfaces/InfoProps";
 import { useState } from 'react';
 
 const ProjectInfo = ({page, addPage, project, setProject}: InfoProps) => {
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredDescription, setEnteredDescription] = useState("");
+  const [enteredName, setEnteredName] = useState<string>("");
+  const [enteredDescription, setEnteredDescription] = useState<string>("");
 
   const nameChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
     setEnteredName(event.currentTarget.value);

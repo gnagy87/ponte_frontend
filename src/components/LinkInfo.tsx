@@ -3,7 +3,7 @@ import { InfoProps } from "../interfaces/InfoProps";
 import { useState } from 'react';
 
 const LinkInfo = ({page, addPage, project, setProject}: InfoProps) => {
-  const [enteredLink, setEnteredLink] = useState("");
+  const [enteredLink, setEnteredLink] = useState<string>("");
 
   const enteredLinkHandler = (event: React.FormEvent<HTMLInputElement>) => {
     setEnteredLink(event.currentTarget.value);

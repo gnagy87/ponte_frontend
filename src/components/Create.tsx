@@ -49,7 +49,7 @@ const Create = ({ offCreateHandler, addNewProject }: CreateProps) => {
   return (
     <div className="App">
       <ProgressBar page={page}/>
-      <div className="body">{componentList[page]}</div>
+      <div>{componentList[page]}</div>
     </div>
   );
 }

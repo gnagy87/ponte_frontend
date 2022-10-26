@@ -13,7 +13,7 @@ const Projects = ({projects}: Props) => {
   }
 
   return (
-      <div>
+      <div className="wrapper">
         {projects.map(projectItem => <ProjectItem projectItem={projectItem}/>)}
       </div>
   );

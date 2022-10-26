@@ -8,7 +8,7 @@ import { useAsync } from "react-async";
 
 const DUMMY_PROJECTS: Array<Project> = [
     {
-      name: "projekt1", 
+      name: "Első projekt", 
       description: "description description description description description", 
       colleagues: [
         {
@@ -19,7 +19,7 @@ const DUMMY_PROJECTS: Array<Project> = [
       links: ["link1"]
     },
     {
-      name: "projekt2", 
+      name: "Második projekt", 
       description: "description description description description description", 
       colleagues: [
         {
@@ -30,7 +30,7 @@ const DUMMY_PROJECTS: Array<Project> = [
       links: ["link2"]
     },
     {
-      name: "projekt3", 
+      name: "Harmadik projekt", 
       description: "description description description description description", 
       colleagues: [
         {
@@ -41,7 +41,7 @@ const DUMMY_PROJECTS: Array<Project> = [
       links: ["link3"]
     },
     {
-      name: "projekt4", 
+      name: "Negyedik projekt", 
       description: "description description description description description", 
       colleagues: [
         {
@@ -77,7 +77,7 @@ function App() {
 
   return (
     <div>
-      {!onCreate && <button onClick={onCreateHandler}>Új projekt</button>}
+      {!onCreate && <button className="btn" onClick={onCreateHandler}>Új projekt</button>}
       {!onCreate && <Projects projects={projects}/>}
       {onCreate && <Create offCreateHandler={offCreateHandler} addNewProject={addNewProject}/>}
     </div>
