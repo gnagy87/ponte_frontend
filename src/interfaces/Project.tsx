@@ -1,6 +1,6 @@
 import { Colleague } from "./Colleague";
 
-export interface Project {
+export interface Project { 
   name: string;
   description: string;
   colleagues: Array<Colleague> | null;

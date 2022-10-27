@@ -1,12 +1,19 @@
 import React from "react";
 import { Project } from "../interfaces/Project"
 import { CustomPlaceholder } from 'react-placeholder-image';
+import { useState } from 'react';
+import Details from "./Details";
 
 interface Props {
   projectItem: Project;
 }
 
 const ProjectItem = ({ projectItem }: Props) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
 
   const getInitialLetters = () => {
     let result: string = "";
@@ -15,7 +22,7 @@ const ProjectItem = ({ projectItem }: Props) => {
   }
 
   return (
-    <div className="card">
+    <div className="card" onClick={() => togglePopup()}>
       <div>
         <CustomPlaceholder
           width={100}
@@ -29,6 +36,7 @@ const ProjectItem = ({ projectItem }: Props) => {
         <h2 className="card__title">{projectItem.name}</h2>
         <p className="card__description">{projectItem.description}</p>
       </div>
+      {isOpen && <Details projectItem={projectItem} handleClose={togglePopup}/>}
     </div>
   );
 }

@@ -11,15 +11,15 @@ const ProgressBar = ({page}: Props) => {
       <div style={{
         width: 
           page === 0
-            ? "30%"
+            ? "33%"
             : page === 1
-              ? "60%"
+              ? "66%"
               : page === 2
                 ? "100%"
                 : "100%"
       }}></div>
     </div>
-  )
+  );
 }
 
 export default ProgressBar;

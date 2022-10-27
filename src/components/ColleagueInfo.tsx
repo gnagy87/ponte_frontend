@@ -16,7 +16,7 @@ const ColleagueInfo = ({page, addPage, project, setProject}: InfoProps) => {
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (project.colleagues == null) {
+    if (project.colleagues === null) {
       setProject({ ...project, colleagues: [{name: enteredName, position: enteredPosition}]});
     } else {
       setProject({ ...project, colleagues: [ ...project.colleagues, {name: enteredName, position: enteredPosition}]});
@@ -28,21 +28,21 @@ const ColleagueInfo = ({page, addPage, project, setProject}: InfoProps) => {
   return(
     <div>
       <form onSubmit={submitHandler}>
-        <input
+        <input className="input"
           type="text"
           placeholder="Kolléga"
           value={enteredName}
           onChange={(e) => nameChangeHandler(e)}
         />
-        <input
+        <input className="input"
             type="text"
             placeholder="Pozíció"
             value={enteredPosition}
             onChange={(e) => positionChangeHandler(e)}
         />
-      <button type="submit">Kolléga hozzáadása</button>
+      <button className="btn" type="submit">Kolléga hozzáadása</button>
       </form>
-      <button
+      <button className="btn"
           onClick={() => {addPage(page + 1);}}>
             Következő lépés
       </button>

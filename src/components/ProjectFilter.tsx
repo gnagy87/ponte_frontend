@@ -20,15 +20,15 @@ const ProjectFilter = ({ filterProjects }: Props) => {
   return(
     <div>
       <form onSubmit={submitHandler}>
-        <input 
+        <input className="input"
           type="text"
           value={enteredValue}
           onChange={(e) => valueChangeHandler(e)}
         />
-        <button type="submit">Keresés</button>
+        <button className="btn" type="submit">Keresés</button>
       </form>
     </div>
-  )
+  );
 }
 
 export default ProjectFilter;

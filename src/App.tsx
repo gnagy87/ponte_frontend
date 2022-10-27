@@ -60,12 +60,6 @@ function App() {
   const [onCreate, setOnCreate] = useState<boolean>(false);
   const [filter, setFilter] = useState<boolean>(false);
 
-  const getProjects = async () => {
-    setProjects(DUMMY_PROJECTS)
-  }
-
-  useEffect(() => {getProjects()}, []);
-
   const onCreateHandler = () => {
     setOnCreate(true);
   };
@@ -74,9 +68,15 @@ function App() {
     setOnCreate(false);
   };
 
-  const addNewProject = (project: Project) => {
-    setProjects(prevProjects => [...prevProjects, project])
+  const offFilter = () => {
+    setFilter(false);
+  }
+
+  const getProjects = async () => {
+    setProjects(DUMMY_PROJECTS)
   };
+
+  useEffect(() => {getProjects()}, []);
 
   const filterProjects = (searched: string) => {
     if (searched === null || searched === undefined || searched === "") {
@@ -88,12 +88,16 @@ function App() {
     }
   }
 
+  const addNewProject = (project: Project) => {
+    setProjects(prevProjects => [...prevProjects, project])
+  };
+
   return (
     <div>
       {!onCreate && <button className="btn" onClick={onCreateHandler}>Új projekt</button>}
       {!onCreate && <ProjectFilter filterProjects={filterProjects}/>}
       {!onCreate && <Projects projects={filter ? filteredProjects : projects}/>}
-      {onCreate && <Create offCreateHandler={offCreateHandler} addNewProject={addNewProject}/>}
+      {onCreate && <Create offCreateHandler={offCreateHandler} addNewProject={addNewProject} offFilter={offFilter}/>}
     </div>
   );
 }

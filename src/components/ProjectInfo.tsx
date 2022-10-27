@@ -25,7 +25,7 @@ const ProjectInfo = ({page, addPage, project, setProject}: InfoProps) => {
   return(
     <div>
       <form onSubmit={submitHandler}>
-        <input
+        <input className="input"
           type="text"
           maxLength={255}
           placeholder="Projekt név"
@@ -33,7 +33,7 @@ const ProjectInfo = ({page, addPage, project, setProject}: InfoProps) => {
           value={enteredName}
           onChange={(e) => nameChangeHandler(e)}
         />
-        <input
+        <input className="input"
             type="text"
             minLength={50}
             maxLength={500}
@@ -41,7 +41,7 @@ const ProjectInfo = ({page, addPage, project, setProject}: InfoProps) => {
             value={enteredDescription}
             onChange={(e) => descriptionChangeHandler(e)}
         />
-        <button type="submit">Következő lépés</button>
+        <button className="btn" type="submit">Következő lépés</button>
       </form>
     </div>
   );

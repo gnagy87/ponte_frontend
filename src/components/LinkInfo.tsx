@@ -23,15 +23,15 @@ const LinkInfo = ({page, addPage, project, setProject}: InfoProps) => {
   return(
     <div>
       <form onSubmit={submitHandler}>
-        <input
+        <input className="input"
           type="text"
           placeholder="Link"
           value={enteredLink}
           onChange={(e) => enteredLinkHandler(e)}
         />
-        <button type="submit">Link hozzáadása</button>
+        <button className="btn" type="submit">Link hozzáadása</button>
       </form>
-      <button
+      <button className="btn"
         onClick={() => {
           addPage(page + 1);
         }}>

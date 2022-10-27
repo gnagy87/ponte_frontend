@@ -11,9 +11,9 @@ const hasValueInColleagues = (colleagues: Array<Colleague> | null, searched: str
 }
 
 const hasValueInString = (value: string | null, searched: string) => {
-  return value !== null && value !== undefined && value.includes(searched);
+  return value !== null && value !== undefined && value.toLowerCase().includes(searched.toLowerCase());
 }
 
 const hasValueInList = (links: Array<string> | null, searched: string) => {
-  return links !== null && links !== undefined && links.includes(searched);
+  return links !== null && links !== undefined && links.filter(l => hasValueInString(l, searched)).length > 0;
 }

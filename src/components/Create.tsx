@@ -7,7 +7,7 @@ import LinkInfo from "./LinkInfo";
 import ProjectInfo from "./ProjectInfo";
 import ProgressBar from "./ProgressBar"
 
-const Create = ({ offCreateHandler, addNewProject }: CreateProps) => {
+const Create = ({ offCreateHandler, addNewProject, offFilter }: CreateProps) => {
   const [page, setPage] = useState<number>(0);
   const [project, setProject] = useState<Project>({
     name: "",
@@ -38,16 +38,18 @@ const Create = ({ offCreateHandler, addNewProject }: CreateProps) => {
       addPage={addPage}
       project={project}
       setProject={setProject}
-    />,
+    />
   ];
 
   if (page === 3) {
     addNewProject(project);
     offCreateHandler();
+    offFilter();
   }
 
   return (
     <div className="App">
+      <h2>Projekt hozzáadása</h2>
       <ProgressBar page={page}/>
       <div>{componentList[page]}</div>
     </div>
